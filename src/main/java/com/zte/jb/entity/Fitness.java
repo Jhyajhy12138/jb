@@ -9,17 +9,17 @@ import java.io.Serializable;
  */
 public class Fitness implements Serializable {
     private int fId;
-    private int uId;
+    private User user;
     private int cId;
     private String fTime;
     private String fCreateTime;
 
-    public Fitness(int cid, String fCreateTime, int fid, String fTime, int uid) {
+    public Fitness(int cid, String fCreateTime, int fid, String fTime, User user) {
         this.cId= cid;
         this.fCreateTime = fCreateTime;
         this.fId= fid;
         this.fTime = fTime;
-        this.uId= uid;
+        this.user= user;
     }
 
     public int getcId() {
@@ -38,12 +38,12 @@ public class Fitness implements Serializable {
         this.fId = fId;
     }
 
-    public int getuId() {
-        return uId;
+    public User getuser() {
+        return user;
     }
 
-    public void setuId(int uId) {
-        this.uId = uId;
+    public void setuId(User user) {
+        this.user = user;
     }
 
     public String getfTime() {
@@ -67,7 +67,7 @@ public class Fitness implements Serializable {
         return "Fitness{" +
                 "cId=" + cId +
                 ", fId=" + fId +
-                ", uId=" + uId +
+                ", user=" + user +
                 ", fTime='" + fTime + '\'' +
                 ", fCreateTime='" + fCreateTime + '\'' +
                 '}';

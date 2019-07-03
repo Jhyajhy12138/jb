@@ -1,6 +1,7 @@
 package com.zte.jb.dao;
 
 import com.zte.jb.entity.Fitness;
+import com.zte.jb.entity.User;
 
 import java.util.List;
 

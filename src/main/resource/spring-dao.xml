@@ -35,7 +35,7 @@
         <!--加载数据源-->
         <property name="dataSource" ref="ds"/>
         <!--扫描entity包，将该包下的类设置别名-->
-        <property name="typeAliasesPackage" value="com.zte.blog.entity"/>
+        <property name="typeAliasesPackage" value="com.zte.jb.entity"/>
         <!--
         加载**.mapper映射文件
         -->
@@ -53,7 +53,7 @@
     dao已经被spring管理，key就是类名的首字母小写
     -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.zte.blog.dao"/>
+        <property name="basePackage" value="com.zte.jb.dao"/>
 
     </bean>
 

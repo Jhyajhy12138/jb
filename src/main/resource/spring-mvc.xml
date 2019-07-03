@@ -25,17 +25,4 @@
        <!--访问静态资源-->
        <mvc:default-servlet-handler/>
 
-       <!--直接访问视图
-       根据你的访问路径直接定位到某个视图
-       -->
-       <mvc:view-controller path="/toAbout" view-name="about"/>
-       <mvc:view-controller path="/toAddBlog" view-name="addBlog"/>
-
-
-
-
-
-
-
-
 </beans>

@@ -9,17 +9,17 @@ import java.io.Serializable;
  */
 public class Run implements Serializable{
     private int rId;
-    private int uId;
+    private User user;
     private double rJourney;
     private String rTime;
     private String rCreateTime;
 
-    public Run(String rCreateTime, int rId, double rJourney, String rTime, int uId) {
+    public Run(String rCreateTime, int rId, double rJourney, String rTime, User user) {
         this.rCreateTime = rCreateTime;
         this.rId = rId;
         this.rJourney = rJourney;
         this.rTime = rTime;
-        this.uId = uId;
+        this.user=user;
     }
 
     public int getrId() {
@@ -30,12 +30,12 @@ public class Run implements Serializable{
         this.rId = rId;
     }
 
-    public int getuId() {
-        return uId;
+    public User getuser() {
+        return user;
     }
 
-    public void setuId(int uId) {
-        this.uId = uId;
+    public void setuId(User user) {
+        this.user = user;
     }
 
     public String getrCreateTime() {
@@ -67,7 +67,7 @@ public class Run implements Serializable{
         return "Run{" +
                 "rCreateTime='" + rCreateTime + '\'' +
                 ", rId=" + rId +
-                ", uId=" + uId +
+                ", user=" + user +
                 ", rJourney=" + rJourney +
                 ", rTime='" + rTime + '\'' +
                 '}';
