@@ -18,7 +18,7 @@ public class User implements Serializable {
     private String uBirth;
     private String uRemark;
     private String uCreateTime;
-
+    public User(){};
     public User(String uBirth, String uCreateTime, String uGender, double uHeight, int uId, String uName, String uPwd, String uRemark, int uTel, double uWeight) {
         this.uBirth = uBirth;
         this.uCreateTime = uCreateTime;

@@ -13,7 +13,7 @@ public class Fitness implements Serializable {
     private int cId;
     private String fTime;
     private String fCreateTime;
-
+    public Fitness(){};
     public Fitness(int cid, String fCreateTime, int fid, String fTime, User user) {
         this.cId= cid;
         this.fCreateTime = fCreateTime;
