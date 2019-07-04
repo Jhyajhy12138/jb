@@ -21,7 +21,7 @@
                 b.fCreateTime fCreateTime,
                 (
                 SELECT 
-                c.uName,
+                c.uName
                 FROM t_user c
                 WHERE c.uId=b.uId
                 )as uName
