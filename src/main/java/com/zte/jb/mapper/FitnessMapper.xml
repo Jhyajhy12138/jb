@@ -2,6 +2,45 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="">
+<mapper namespace="com.zte.jb.dao.FitnessDao">
+        <resultMap id="RM" type="fitness">
+                <id property="fid" column="fid"/>
+                <result property="user.id" column="uid" />
+                <result property="cid" column="cid" />
+                <result property="fTime" column="fTime" />
+                <result property="fCreateTime" column="fCreateTime" />
+                <result property="user.uname" column="uname"/>
+
+        </resultMap>
+        <select id="selectAll" resultMap="RM" parameterType="user">
+                SELECT
+                b.fid fid,
+                b.uid uid,
+                b.cid cid,
+                b.fTime fTime,
+                b.fCreateTime fCreateTime,
+                (
+                SELECT 
+                c.uname,
+                FROM t_user c
+                WHERE c.uid=b.uid
+                )as uname
+                FROM t_fitness b,t_user c
+                WHERE b.uid=#{id}
+                ORDER BY b.fCreateTime DESC
+        </select>
+        <insert id="insertFitness"  parameterType="fitness" >
+                INSERT INTO
+                t_fitness
+                (fid,uid,cid,fTime,fCreateTime)
+                VALUES
+                (#{fid},#{user.id},#{cid},#{fTime},#{fCreateTime})
+        </insert>
+        <delete id="deleteFitness" parameterType="fitness">
+                DELETE FROM
+                t_fitness
+                WHERE
+                fid=#{fid}
+        </delete>
 
 </mapper>

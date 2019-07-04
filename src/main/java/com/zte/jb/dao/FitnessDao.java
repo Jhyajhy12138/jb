@@ -12,4 +12,9 @@ import java.util.List;
  */
 public interface FitnessDao {
     public List<Fitness> selectFitnessByUser(User user);
+    //根据用户查找健身记录
+    public int insertFitness(Fitness fitness);
+    //插入健身记录
+    public int deleteFitness(Fitness fitness);
+    //删除健身记录
 }

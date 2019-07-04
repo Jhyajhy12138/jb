@@ -13,7 +13,7 @@ public class Run implements Serializable{
     private double rJourney;
     private String rTime;
     private String rCreateTime;
-
+    public Run(){};
     public Run(String rCreateTime, int rId, double rJourney, String rTime, User user) {
         this.rCreateTime = rCreateTime;
         this.rId = rId;
