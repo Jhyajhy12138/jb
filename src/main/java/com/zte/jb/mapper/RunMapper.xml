@@ -40,6 +40,6 @@
                 DELETE FROM
                 t_run
                 WHERE
-                rId=#{rId} 
+                rId=#{rId}
         </delete>
 </mapper>
