@@ -11,6 +11,8 @@ import java.util.List;
  * Description:<描述>
  */
 public interface FitnessDao {
+    public List<Fitness> selectAll();
+    //查找所有健身信息
     public List<Fitness> selectFitnessByUser(User user);
     //根据用户查找健身记录
     public int insertFitness(Fitness fitness);

@@ -24,6 +24,12 @@ public class RunServiceImpl implements RunService{
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    public  List<Run> findAll(){
+        return runDao.selectAll();
+    }
+    //查询所有跑步信息
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     public List<Run> findRunByUser(User user){
         return runDao.selectRunByUser(user);
     }

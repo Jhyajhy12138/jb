@@ -12,6 +12,22 @@
                 <result property="rCreateTime" column="rCreateTime" />
                 <result property="user.uName" column="uName"/>
         </resultMap>
+        <select id="selectAll" resultMap="RM">
+                SELECT
+                b.rId rId,
+                b.uId uId,
+                b.rJourney rJourney,
+                b.rTime rTime,
+                b.rCreateTime rCreateTime,
+                (
+                SELECT
+                c.uName
+                FROM t_user c
+                WHERE c.uId=b.uId
+                )as uName
+                FROM t_run b,t_user c
+                ORDER BY b.fCreateTime DESC
+        </select>
         <select id="selectRunByUser" parameterType="user" resultMap="RM">
                 SELECT
                 b.rId rId,

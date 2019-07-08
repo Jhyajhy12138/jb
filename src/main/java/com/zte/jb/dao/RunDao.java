@@ -11,6 +11,8 @@ import java.util.List;
  * Description:<描述>
  */
 public interface RunDao {
+    public List<Run> selectAll();
+    //查找所有跑步信息
     public List<Run> selectRunByUser(User user);
     //根据用户查找跑步记录
     public int insertRun(Run run);

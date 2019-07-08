@@ -25,6 +25,11 @@ public class FitnessServiceImpl implements FitnessService{
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    public List<Fitness> findAll(){
+        return fitnessDao.selectAll();
+    }
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     public List<Fitness> findFitnessByUser(User user){
         return fitnessDao.selectFitnessByUser(user);
     }

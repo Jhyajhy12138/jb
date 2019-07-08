@@ -12,6 +12,22 @@
                 <result property="user.uName" column="uName"/>
 
         </resultMap>
+        <select id="selectAll" resultMap="RM">
+                SELECT
+                b.fId fId,
+                b.uId uId,
+                b.cId cId,
+                b.fTime fTime,
+                b.fCreateTime fCreateTime,
+                (
+                SELECT
+                c.uName
+                FROM t_user c
+                WHERE c.uId=b.uId
+                )as uName
+                FROM t_fitness b,t_user c
+                ORDER BY b.fCreateTime DESC
+        </select>
         <select id="selectFitnessByUser" resultMap="RM" parameterType="user">
                 SELECT
                 b.fId fId,
