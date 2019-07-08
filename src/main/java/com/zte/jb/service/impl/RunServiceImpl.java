@@ -4,6 +4,7 @@ import com.zte.jb.dao.RunDao;
 import com.zte.jb.entity.Run;
 import com.zte.jb.entity.User;
 import com.zte.jb.service.RunService;
+import com.zte.jb.utils.CurrentDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -43,6 +44,7 @@ public class RunServiceImpl implements RunService{
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     public int addRun(Run run){
+        run.setrCreateTime(CurrentDate.getCurrentDate());
         return runDao.insertRun(run);
     }
 }

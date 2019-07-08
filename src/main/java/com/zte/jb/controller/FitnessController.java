@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/fitness")
+@RequestMapping(value = {"/fitness"},produces = {"application/json,charset=utf-8"})
 public class FitnessController {
     @Autowired
     private FitnessService fitnessService;
@@ -33,7 +33,7 @@ public class FitnessController {
 
     @RequestMapping("/findByUser.do")//客户端查找健身信息
     @ResponseBody
-    public String findByuser(HttpServletRequest req){
+    public Object findByuser(HttpServletRequest req){
         User user=new User();
         HttpSession session=req.getSession();
         user=(User)session.getAttribute("User");
@@ -46,7 +46,7 @@ public class FitnessController {
 
     @RequestMapping("/add.do")
     @ResponseBody
-    public String addFitness(HttpServletRequest req)  throws InvocationTargetException, IllegalAccessException{
+    public Object addFitness(HttpServletRequest req)  throws InvocationTargetException, IllegalAccessException{
         Fitness fitness=new Fitness();
         User user=new User();
         HttpSession session=req.getSession();
@@ -54,14 +54,11 @@ public class FitnessController {
         BeanUtils.populate(fitness,req.getParameterMap());
         fitness.setuId(user);
         fitnessService.addFitness(fitness);
-        Gson gson=new Gson();
-        Map m = new HashMap();
-        m.put("msg","插入成功");
-        return gson.toJson(m);
+        return "插入成功";
     }
     @RequestMapping("/delete.do")
     @ResponseBody
-    public String deleteFitness(HttpServletRequest req,Integer id)throws InvocationTargetException, IllegalAccessException{
+    public Object deleteFitness(HttpServletRequest req,Integer id)throws InvocationTargetException, IllegalAccessException{
         Map m=new HashMap();
         Gson gson=new Gson();
         try {
