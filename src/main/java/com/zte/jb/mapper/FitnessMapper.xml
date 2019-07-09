@@ -5,7 +5,7 @@
 <mapper namespace="com.zte.jb.dao.FitnessDao">
         <resultMap id="RM" type="fitness">
                 <id property="fId" column="fId"/>
-                <result property="user.id" column="uId" />
+                <result property="user.uId" column="uId" />
                 <result property="cId" column="cId" />
                 <result property="fTime" column="fTime" />
                 <result property="fCreateTime" column="fCreateTime" />

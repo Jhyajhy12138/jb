@@ -5,6 +5,7 @@ import com.zte.jb.entity.Fitness;
 import com.zte.jb.entity.Run;
 import com.zte.jb.entity.User;
 import com.zte.jb.service.FitnessService;
+import com.zte.jb.utils.CurrentDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -43,6 +44,7 @@ public class FitnessServiceImpl implements FitnessService{
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     public int addFitness(Fitness fitness){
+        fitness.setfCreateTime(CurrentDate.getCurrentDate());
         return fitnessDao.insertFitness(fitness);
     }
 
