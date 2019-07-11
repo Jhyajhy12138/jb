@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.jb.dao.PostDao">
+
+    <insert id="insertPost" parameterType="Post">
+        insert into jb_fitness.t_post (uId, pContent, pImage, pCreateTime) values (#{uId},#{pContent},#{pImage},#{pCreateTime})
+    </insert>
+
+    <!--<select id="selectPostByPId" parameterType="Integer" resultType="Post">
+        select * from jb_fitness.t_post where pId = #{pId}
+    </select>-->
+    <select id="selectAllPosts" resultType="java.util.Map">
+        select * from jb_fitness.t_post p,jb_fitness.t_user u where p.uId = u.uId order by pCreateTime desc
+    </select>
+   <!-- <select id="login" resultType="User" parameterType="String">
+        select * from jb_fitness.t_user where uTel=#{uTel}
+    </select>-->
+</mapper>

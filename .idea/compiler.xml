@@ -12,9 +12,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="blog" />
-        <module name="jb" />
-        <module name="video" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

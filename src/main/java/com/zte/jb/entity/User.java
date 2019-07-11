@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class User implements Serializable {
     private int uId;
     private String uName;
-    private int uTel;
+    private String uTel;
     private String uPwd;
     private double uHeight;
     private double uWeight;
@@ -19,7 +19,7 @@ public class User implements Serializable {
     private String uRemark;
     private String uCreateTime;
     public User(){};
-    public User(String uBirth, String uCreateTime, String uGender, double uHeight, int uId, String uName, String uPwd, String uRemark, int uTel, double uWeight) {
+    public User(String uBirth, String uCreateTime, String uGender, double uHeight, int uId, String uName, String uPwd, String uRemark, String uTel, double uWeight) {
         this.uBirth = uBirth;
         this.uCreateTime = uCreateTime;
         this.uGender = uGender;
@@ -48,11 +48,11 @@ public class User implements Serializable {
         this.uName = uName;
     }
 
-    public int getuTel() {
+    public String getuTel() {
         return uTel;
     }
 
-    public void setuTel(int uTel) {
+    public void setuTel(String uTel) {
         this.uTel = uTel;
     }
 
