@@ -11,6 +11,8 @@ import java.util.List;
  * Description:<描述>
  */
 public interface FitnessService {
+    public List<Fitness> findAll();
+    //查找所有健身信息
     public List<Fitness> findFitnessByUser(User user);
     //查找健身信息
     public int addFitness(Fitness fitness);

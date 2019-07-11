@@ -46,7 +46,7 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.38</version>
+      <version>8.0.16</version>
     </dependency>
     <!-- jdbc jar -->
 
@@ -199,14 +199,14 @@
   <build>
     <plugins>
       <!--tomcat7插件  start-->
-      <!--<plugin>
+      <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
         <configuration>
           <path>/blog</path>
           <port>8888</port>
         </configuration>
-      </plugin>-->
+      </plugin>
       <!--tomcat7插件  end-->
 
 

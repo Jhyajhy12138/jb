@@ -6,12 +6,28 @@
 <mapper namespace="com.zte.jb.dao.RunDao">
         <resultMap id="RM" type="run">
                 <id property="rId" column="rId"/>
-                <result property="user.id" column="uId" />
+                <result property="user.uId" column="uId" />
                 <result property="rJourney" column="rJourney" />
                 <result property="rTime" column="rTime" />
                 <result property="rCreateTime" column="rCreateTime" />
                 <result property="user.uName" column="uName"/>
         </resultMap>
+        <select id="selectAll" resultMap="RM">
+                SELECT
+                b.rId rId,
+                b.uId uId,
+                b.rJourney rJourney,
+                b.rTime rTime,
+                b.rCreateTime rCreateTime,
+                (
+                SELECT
+                c.uName
+                FROM t_user c
+                WHERE c.uId=b.uId
+                )as uName
+                FROM t_run b,t_user c
+                ORDER BY b.rCreateTime DESC
+        </select>
         <select id="selectRunByUser" parameterType="user" resultMap="RM">
                 SELECT
                 b.rId rId,
@@ -27,14 +43,14 @@
                 )as uName
                 FROM t_run b,t_user c
                 WHERE b.uId=#{uId}
-                ORDER BY b.fCreateTime DESC
+                ORDER BY b.rCreateTime DESC
         </select>
         <insert id="insertRun" parameterType="run">
                 INSERT INTO
                 t_run
                 (rId,uId,rJourney,rTime,rCreateTime)
                 VALUES
-                (#{rId},#{uId},#{rJourney},#{rTime},#{rCreateTime})
+                (#{rId},#{user.uId},#{rJourney},#{rTime},#{rCreateTime})
         </insert>
         <delete id="deleteRun" parameterType="run">
                 DELETE FROM

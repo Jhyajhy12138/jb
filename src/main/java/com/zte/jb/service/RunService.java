@@ -11,8 +11,10 @@ import java.util.List;
  * Description:<描述>
  */
 public interface RunService {
+    public List<Run> findAll();
+    //查找所有跑步信息
     public List<Run> findRunByUser(User user);
-    //查找跑步信息
+    //查找该用户跑步信息
     public int addRun(Run run);
     //添加跑步信息
     public int removeRun(Run run);
