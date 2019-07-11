@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.zte.jb.entity.Fitness;
 import com.zte.jb.entity.User;
 import com.zte.jb.service.FitnessService;
-import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping(value = {"/fitness"},produces = {"application/json,charset=utf-8"})
+@RequestMapping(value = "/fitness",produces = {"application/json;charset=utf-8"})
 public class FitnessController {
     @Autowired
     private FitnessService fitnessService;
@@ -27,13 +26,14 @@ public class FitnessController {
     @RequestMapping("/fitnessManager")
     public String fitnessManager(Model model){
         List<Fitness> fitnesses=fitnessService.findAll();
-        model.addAttribute("fitnesses","fitnesses");
-        return "/fitness/fitnessManager";//转到健身管理的jsp页面
+        model.addAttribute("fitnesses",fitnesses);
+        return "/fitness/fitnessManager";
+        //转到健身管理的jsp页面
     }
 
     @RequestMapping("/findByUser.do")//客户端查找健身信息
     @ResponseBody
-    public Object findByuser(HttpServletRequest req){
+    public Object findByUser(HttpServletRequest req){
         User user=new User();
         HttpSession session=req.getSession();
         user=(User)session.getAttribute("User");
@@ -49,10 +49,16 @@ public class FitnessController {
     public Object addFitness(HttpServletRequest req)  throws InvocationTargetException, IllegalAccessException{
         Fitness fitness=new Fitness();
         User user=new User();
-        HttpSession session=req.getSession();
-        user=(User)session.getAttribute("user");
-        BeanUtils.populate(fitness,req.getParameterMap());
+       // HttpSession session=req.getSession();
+       // user=(User)session.getAttribute("user");
+        user.setuId(1);
         fitness.setuId(user);
+        String fTime;
+        Integer ID;
+        ID=Integer.parseInt(req.getParameter("cId"));
+        fTime=req.getParameter("fTime");
+        fitness.setfTime(fTime);
+        fitness.setcId(ID);
         fitnessService.addFitness(fitness);
         return "插入成功";
     }
@@ -64,7 +70,7 @@ public class FitnessController {
         try {
             Fitness fitness=new Fitness();
 
-            fitness.setcId(id);
+            fitness .setcId(id);
             fitnessService.removeFitness(fitness);
             m.put("msg","插入成功");
             return gson.toJson(m);
